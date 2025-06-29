@@ -10,5 +10,10 @@ export const theme = {
   },
   typography: {
     body: '#ffffff',
+    error: '#FF0000',
   },
-};
+  input: {
+    background: '#323232',
+    border: '#555',
+  },
+} as const;
