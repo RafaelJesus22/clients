@@ -1,10 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
 import authSlice from './fetures/auth';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
+import clientSlice from './fetures/clients';
 
 export const store = configureStore({
   reducer: {
     auth: authSlice,
+    clients: clientSlice,
   },
 });
 
