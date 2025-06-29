@@ -40,11 +40,18 @@ export class ClientsService {
 
   public async getClients(): Promise<any[]> {
     await this.delay(2000);
-    return this.clients.map(clientMapper);
+    return this.clients.map(mapClientDtoToModel);
+  }
+
+  public async createClient(client: ClientModel): Promise<ClientModel> {
+    await this.delay(1000);
+    const newClient: ClientDTO = mapClientModelToDto(client);
+    this.clients.push(newClient);
+    return client;
   }
 }
 
-function clientMapper(client: ClientDTO): ClientModel {
+function mapClientDtoToModel(client: ClientDTO): ClientModel {
   return {
     name: client.info.nomeCompleto,
     email: client.info.detalhes.email,
@@ -53,6 +60,24 @@ function clientMapper(client: ClientDTO): ClientModel {
       sales: client.estatisticas?.vendas?.map(sale => ({
         date: sale.data,
         value: sale.valor,
+      })),
+    },
+  };
+}
+
+function mapClientModelToDto(client: ClientModel): ClientDTO {
+  return {
+    info: {
+      nomeCompleto: client.name,
+      detalhes: {
+        email: client.email,
+        nascimento: client.birthDate,
+      },
+    },
+    estatisticas: {
+      vendas: client.stats.sales?.map(sale => ({
+        data: sale.date,
+        valor: sale.value,
       })),
     },
   };

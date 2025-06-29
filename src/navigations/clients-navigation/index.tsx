@@ -2,7 +2,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React from 'react';
 import { ClientsScreen } from '../../screens/clients';
 import { Header } from '../../components/header';
-import { CreateClientScreen } from '../../screens/clients/create-clients';
+import { CreateClientScreen } from '../../screens/clients/create-client';
 
 const Stack = createNativeStackNavigator();
 
