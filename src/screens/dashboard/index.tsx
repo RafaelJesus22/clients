@@ -1,5 +1,10 @@
 import { Text } from 'react-native';
+import { ScreenWrapper } from '../../components/screen-wrapper';
 
 export function DashboardScreen(): React.JSX.Element {
-  return <Text>Hello, Dashboard</Text>;
+  return (
+    <ScreenWrapper>
+      <Text>Hello, Dashboard</Text>
+    </ScreenWrapper>
+  );
 }
