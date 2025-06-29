@@ -1,0 +1,14 @@
+import { StyleSheet } from 'react-native';
+
+export const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'space-between',
+  },
+  content: {
+    alignItems: 'center',
+  },
+  logo: {
+    marginTop: 24,
+  },
+});
