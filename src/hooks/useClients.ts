@@ -14,7 +14,6 @@ export function useClients() {
       try {
         const response = await clientsService.getClients();
         dispatch(setClients(response));
-        console.log('Fetched clients:', JSON.stringify(response, null, 2));
       } catch (error) {
         console.error('Error fetching clients:', error);
       }
@@ -25,9 +24,8 @@ export function useClients() {
   const createClient = useCallback(
     async (client: ClientModel) => {
       try {
-        const response = await clientsService.createClient(client);
+        await clientsService.createClient(client);
         await getClients();
-        console.log('Created client:', JSON.stringify(response, null, 2));
       } catch (error) {
         console.error('Error creating client:', error);
       }
@@ -35,9 +33,29 @@ export function useClients() {
     [getClients],
   );
 
+  const getStats = useCallback(async () => {
+    try {
+      const [salesStats, clientHighestSale, clientHighestAverage] =
+        await Promise.all([
+          clientsService.getSalesStats(),
+          clientsService.getHighestSalesClient(),
+          clientsService.getHighestAverageClient(),
+        ]);
+
+      return {
+        salesStats,
+        clientHighestSale,
+        clientHighestAverage,
+      };
+    } catch (error) {
+      console.error(error);
+    }
+  }, []);
+
   return {
     clients,
     getClients,
     createClient,
+    getStats,
   };
 }

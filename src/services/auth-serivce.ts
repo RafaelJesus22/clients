@@ -21,6 +21,5 @@ export class AuthService implements AuthServiceInterface {
 
   async logout(): Promise<void> {
     await this.delay(2000);
-    console.log('Logging out');
   }
 }

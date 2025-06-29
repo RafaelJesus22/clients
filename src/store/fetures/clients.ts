@@ -9,7 +9,6 @@ export const clientsSlice = createSlice({
   reducers: {
     setClients: (state, action) => {
       state.clients = action.payload;
-      console.log('Clients updated:', JSON.stringify(state.clients, null, 2));
     },
   },
 });
