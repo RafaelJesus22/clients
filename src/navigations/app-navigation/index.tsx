@@ -1,14 +1,14 @@
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { ClientsNavigation } from '../clients-navigation';
-import { DashboardScreen } from '../../screens/dashboard';
+import { TabsNavigation } from '../tabs-navigation';
 
-const Tab = createBottomTabNavigator();
+const Stack = createNativeStackNavigator();
 
 export function AppNavigation() {
   return (
-    <Tab.Navigator screenOptions={{ headerShown: false }}>
-      <Tab.Screen name="Clients" component={ClientsNavigation} />
-      <Tab.Screen name="Dashboard" component={DashboardScreen} />
-    </Tab.Navigator>
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="HomeTabs" component={TabsNavigation} />
+      <Stack.Screen name="ClientsNavigation" component={ClientsNavigation} />
+    </Stack.Navigator>
   );
 }

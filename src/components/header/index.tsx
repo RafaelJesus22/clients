@@ -22,3 +22,11 @@ export function Header({ onBack, onClose, title }: Props) {
     </SafeAreaView>
   );
 }
+
+export function renderHeader(
+  title?: string,
+  onBack?: () => void,
+  onClose?: () => void,
+) {
+  return <Header title={title} onBack={onBack} onClose={onClose} />;
+}

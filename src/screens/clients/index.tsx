@@ -22,7 +22,7 @@ export function ClientsScreen(): React.JSX.Element {
   const navigation = useNavigation();
 
   function addClient() {
-    navigation.navigate('CreateClient' as never);
+    navigation.navigate('ClientsNavigation' as never);
   }
 
   const fetchClients = useCallback(async () => {
