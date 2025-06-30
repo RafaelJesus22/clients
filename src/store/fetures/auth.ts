@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 export const authSlice = createSlice({
   name: 'auth',
   initialState: {
-    isAuthenticated: __DEV__ ? true : false, // Set to true in development mode for easier testing
+    isAuthenticated: false,
   },
   reducers: {
     login: state => {
